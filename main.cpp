@@ -6,10 +6,9 @@ using namespace std;
 
 int main()
 {
-	Length first{ 10 };
-	Length second{ 10 };
+	Length length(10);
 
-	if (first != 10)
+	cout << length;
 
 	return 0;
 }

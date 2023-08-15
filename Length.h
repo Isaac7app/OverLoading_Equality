@@ -1,28 +1,27 @@
 #ifndef OVERLOADING_H
 #define OVERLOADING_H
 
+#include <compare>
+#include <ostream>
+
+using namespace std;
+
 class Length
 {
 public:
-	// Constructor
-	explicit Length(int value);
+	Length(int value);
+	bool operator==(const Length& other) const;
+	strong_ordering operator<=>(const Length& other) const;
 
-	// Equality Operators
-	bool operator ==(const Length& other) const;
-
-	bool operator ==(int other) const;
-	bool operator !=(int other) const;
-
-	//Comaparison Operators
-	bool operator <(const Length& other) const;
-	bool operator <=(const Length& other) const;
-	bool operator >(const Length& other) const;
-	bool operator >=(const Length& other) const;
+	int getValue() const;
+	void setValue(int value); 
 
 
 private:
 	int value;
 };
+
+ostream &operator<<(ostream& stream,const Length& lenght);
 
 
 #endif // OVERLOADING_H

@@ -1,6 +1,8 @@
 #include "Length.h"
+#include <ostream>
 
-Length::Length(int value): value(value)
+
+Length::Length(int value) : value{value}
 {
 }
 
@@ -9,32 +11,23 @@ bool Length::operator==(const Length& other) const
 	return value == other.value;
 }
 
-bool Length::operator==(int other) const
+int Length::getValue() const
 {
-	return value == other;
+	return value;
 }
 
-bool Length::operator!=(int other) const
+void Length::setValue(int value)
 {
-	return !(value == other);
+	this->value = value;
 }
 
-bool Length::operator<(const Length& other) const
+strong_ordering Length::operator<=>(const Length& other) const
 {
-	return value < other.value;
+	return value <=> other.value;
 }
 
-bool Length::operator<=(const Length& other) const
+ostream &operator<<(ostream& stream, const Length& lenght)
 {
-	return !(value < other.value);
-}
-
-bool Length::operator>(const Length& other) const
-{
-	return value > other.value;
-}
-
-bool Length::operator>=(const Length& other) const
-{
-	return !(value > other.value);
+	stream << lenght.getValue();
+	return stream;
 }
